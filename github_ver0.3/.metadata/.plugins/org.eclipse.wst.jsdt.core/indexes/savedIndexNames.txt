@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+D:\stonepassConditionCheck\github_ver0.2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3732158861.index
-2687342616.index
-2448409698.index
-1638843084.index
-3390230356.index
-3602175820.index
-4002287569.index
