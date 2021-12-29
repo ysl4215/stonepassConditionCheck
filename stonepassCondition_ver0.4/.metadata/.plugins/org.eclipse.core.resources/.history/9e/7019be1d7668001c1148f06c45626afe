@@ -1,0 +1,9 @@
+var a = 1;
+
+function Plus(){
+	
+	console.log(a+a+a);
+	
+}
+
+

@@ -29,12 +29,12 @@ public class ConditionBoardController {
 
 		return "/condition/condition";
 	}
-	
+
 	@RequestMapping(value = "/condition", method = RequestMethod.POST)
 	public String conditionInsert(@RequestParam(required = false, defaultValue = "1") String orga_name,
 			@RequestParam(required = false, defaultValue = "1") String orga_url, ConditionVO conditionvo)
 			throws Exception {
-		
+
 		System.out.println(orga_name);
 
 		conditionvo.setOrga_name(orga_name);
@@ -60,66 +60,77 @@ public class ConditionBoardController {
 	 * 
 	 * return "redirect:/condition"; }
 	 */
+
 	/* 팝업창 */
-	@GetMapping("/organization")
+
+	// 컨트롤러에서 반환형 void를 사용하면 Mapping값으로 JSP찾아감
+	@GetMapping("/orgainsert")
 	public void organizationGET() throws Exception {
 
 		/* logger.info("authorPopGET......."); */
 
 	}
-	
-	@PostMapping("/condition/organization")
-	public void organizationPOST() throws Exception {
+	// 컨트롤러에서 반환형 void를 사용하면 Mapping값으로 JSP찾아감
+	/*
+	 * @PostMapping("/condition/organization") public void organizationPOST() throws
+	 * Exception {
+	 * 
+	 * logger.info("authorPopGET.......");
+	 * 
+	 * }
+	 */
 
-		/* logger.info("authorPopGET......."); */
-
-	}
-	
-	
-	
+	// 컨트롤러에서 반환형 void를 사용하면 Mapping값으로 JSP찾아감
 	@GetMapping("/condition/content")
-	public void contentBoard(@RequestParam(required = false, defaultValue = "1") int bid,
-			ConditionVO conditionvo, Model model) throws Exception {
+	public void contentBoard(@RequestParam(required = false, defaultValue = "1") int bid, ConditionVO conditionvo,
+			Model model) throws Exception {
 
-		
-	conditionservice.contentBoard(conditionvo);
-	
-	System.out.println(conditionservice.contentBoard(conditionvo));
-	
-	model.addAttribute("contentboard", conditionservice.contentBoard(conditionvo));
-	
+		conditionservice.contentBoard(conditionvo);
+
+		System.out.println(conditionservice.contentBoard(conditionvo));
+
+		model.addAttribute("contentboard", conditionservice.contentBoard(conditionvo));
+
 	}
-	
+
 	@RequestMapping(value = "/conditionModify", method = RequestMethod.POST)
 	public String conditionModify(@RequestParam(required = false, defaultValue = "1") String orga_name,
 			@RequestParam(required = false, defaultValue = "1") String orga_url,
-			@RequestParam(required = false, defaultValue = "1") int bid,
-			ConditionVO conditionvo) throws Exception {
+			@RequestParam(required = false, defaultValue = "1") int bid, ConditionVO conditionvo) throws Exception {
 
-		System.out.println(orga_name + "bbb"+orga_url);
-		
+		System.out.println(orga_name + "bbb" + orga_url);
+
 		conditionvo.setBid(bid);
 		conditionvo.setOrga_name(orga_name);
 		conditionvo.setOrga_url(orga_url);
-		
+
 		conditionservice.modifyBoard(conditionvo);
 
 		return "redirect:/condition";
 	}
-	
+
 	@RequestMapping(value = "/conditionDelete", method = RequestMethod.GET)
-	public String conditionDelete(@RequestParam(required = false, defaultValue = "1") int bid,
-			ConditionVO conditionvo) throws Exception {
+	public String conditionDelete(@RequestParam(required = false, defaultValue = "1") int bid, ConditionVO conditionvo)
+			throws Exception {
 
 		System.out.println(bid);
-		
-		
-		
+
 		conditionservice.deleteBoard(conditionvo);
 
 		return "/condition/condition";
 	}
-
-
+	
+	@RequestMapping(value= "/emailInsert", method = RequestMethod.GET)
+	public String emailInsert() {
+		return "/condition/emailinsert";
+	}
+	
+	@RequestMapping(value= "/emailInsert", method = RequestMethod.POST)
+	public String emailInsert2(@RequestParam(required = false, defaultValue = "1") String email,
+			@RequestParam(required = false, defaultValue = "1") String name) {
+		System.out.println(email + "  "+ name);
+		
+		return "redirect:/condition";
+	}
 
 }

@@ -16,7 +16,7 @@
 
 <!-- common CSS -->
 <link rel="stylesheet"
-	href="<c:url value='/resources/common/css/commona.css'/>">
+	href="<c:url value='/resources/common/css/common.css'/>">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -33,6 +33,8 @@ body {
 </style>
 
 <script>
+
+
 /* 	$(document)
 			.on(
 					'click',
@@ -50,7 +52,7 @@ body {
 	function insert(){
 		
 		
-		let popUrl = "/organization";
+		let popUrl = "/orgainsert";
 		let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
 
 		window.open(popUrl, "기관 등록", popOption);
@@ -117,6 +119,8 @@ body {
 		var bid = kdwthis.value
 
 		var values = 0;
+		
+		
 		if (kdwthis.checked) {
 			values = 1
 		} else {
@@ -139,6 +143,8 @@ body {
 				alert("error");
 			}
 		});
+		
+		
 	}
 
 	//CURL 전체연결 버튼
@@ -278,25 +284,27 @@ body {
 
 	}
 </script>
+
+
 </head>
 
 <body>
 	<article>
 		<div class="container">
 			<div>
-				<button type="button" class="btn btn-sm btn-primary"  onclick="insert()">기관
-					등록</button>
+				<button type="button" class="btn btn-sm btn-primary"
+					onclick="insert()">기관 등록</button>
+
+				<button type="button" class="btn btn-sm btn-primary"
+					onclick="email()">e-mail 등록</button>
 			</div>
+
 			<br>
 			<div>
-
-
 				<label class="switch-button"> <input value=""
 					type="checkbox" id="checkAll" name="checkall" /> <span
 					class="onoff-switch"></span>
 				</label> <input type="hidden" id="result" name="result">
-
-
 			</div>
 
 			<div class="table-responsive">
@@ -310,54 +318,38 @@ body {
 					</colgroup>
 
 					<thead>
-
 						<tr>
-
 							<th>NO</th>
-
 							<th>기관이름</th>
-
 							<th>기관주소</th>
-
 							<th>CURL</th>
-
 							<th>연결상태</th>
-
 						</tr>
-
 					</thead>
 
 					<tbody>
-
 						<c:choose>
-
 							<c:when test="${empty boardList }">
-
 								<tr>
 									<td colspan="5" align="center">데이터가 없습니다.</td>
 								</tr>
-
 							</c:when>
 
 							<c:when test="${!empty boardList}">
-
 								<c:forEach var="list" items="${boardList}">
-
 									<tr>
-
 										<td><c:out value="${list.bid}" /></td>
-
 										<td><c:out value="${list.orga_name}" /></td>
-
-<!-- <div>
+										<!-- <div>
 				<button type="button" class="btn btn-sm btn-primary" id="btnInsert">기관
 					등록</button>
-			</div> -->				
-	
+			</div> -->
+
 
 										<%-- <td><a href="#" onclick="modify(<c:out value="${list.bid}"/>)"><c:out
 													value="${list.orga_url}" /></a></td> --%>
-<td><a href="#" onclick="modify(${list.bid})"><c:out value="${list.orga_url}" /></a></td>
+										<td><a href="#" onclick="modify(${list.bid})"><c:out
+													value="${list.orga_url}" /></a></td>
 
 										<td><label class="switch-button"> <input
 												class="chkselect" value="${list.bid}" type="checkbox"
@@ -366,14 +358,7 @@ body {
 										</label></td>
 										<td>
 											<div id="condition${list.bid}"></div>
-
 										</td>
-
-										<%-- <td><c:if test="${list.bid ne null}">
-
-												<div id="condition${list.bid}"></div>
-
-											</c:if></td> --%>
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -383,6 +368,11 @@ body {
 			</div>
 		</div>
 	</article>
+<script src="/resources/common/js/condition.js">
+
+
+</script>
+
 </body>
 </html>
 
