@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="com.swempire.web.condition.emailMapper">
+
+<select id="getBoardList"
+		resultType="com.swempire.web.condition.VO.ConditionVO">
+		SELECT * FROM condition_board
+	</select>
+
+</mapper>

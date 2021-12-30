@@ -1,0 +1,8 @@
+package com.swempire.web.condition.DAO;
+
+import com.swempire.web.condition.VO.EmailVO;
+
+public interface EmailDAO {
+	public int emailInsert(EmailVO emailvo) throws Exception;
+	
+}

@@ -1,0 +1,21 @@
+package com.swempire.web.condition.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.swempire.web.condition.VO.EmailVO;
+
+@Controller
+public class EmailController {
+	
+	@RequestMapping(value = "/emailInsert", method = RequestMethod.POST)
+	public String EmailInsert(@RequestParam(required = false, defaultValue = "null") String email,
+			@RequestParam(required = false, defaultValue = "null")String name,EmailVO emailvo) {
+		
+		
+		
+		return null;
+	}
+}

@@ -70,7 +70,6 @@ public class RestConditionController {
 				return condition;
 			}
 
-			// curlService.curlShoot();
 
 		}
 		return "";
@@ -102,11 +101,10 @@ public class RestConditionController {
 				if (curlCode == 200 && errorNum != 0) {
 
 					this.condition = "O";
-
 				} else if (curlCode != 200 || errorNum == 0) {
-
+						
+					
 					this.condition = "X";
-
 				}
 
 				arr[i] = condition;
@@ -120,26 +118,7 @@ public class RestConditionController {
 
 	}
 
-	/*
-	 * @RequestMapping(value = "/conditionCurlArrayOff", method =
-	 * RequestMethod.POST) public String[] curlArray2(@RequestParam(required =
-	 * false, defaultValue = "null", value="bidArray" ) int[]
-	 * bidArray, @RequestParam(required = false,defaultValue = "null",
-	 * value="values") String values, ConditionVO conditionvo,Model model) throws
-	 * Exception { System.out.println(bidArray); System.out.println(111); int
-	 * checked = Integer.parseInt(values);
-	 * 
-	 * System.out.println(checked+"1111"); List<ConditionVO> list =
-	 * curlService.orgaListSelect(conditionvo); String[] arr = new
-	 * String[list.size()];
-	 * 
-	 * //System.out.println(Arrays.toString(bidArray));
-	 * 
-	 * return arr;
-	 * 
-	 * }
-	 */
-
+	
 	
 
 }

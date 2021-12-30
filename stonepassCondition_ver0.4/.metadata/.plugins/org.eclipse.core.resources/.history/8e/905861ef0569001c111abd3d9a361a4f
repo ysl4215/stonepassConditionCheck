@@ -1,0 +1,7 @@
+package com.swempire.web.condition.VO;
+
+public class EmailVO {
+	int bid;
+	String email;
+	String name;
+}

@@ -1,0 +1,68 @@
+$(document).on('click', '#emailinsert', function(e) {
+
+	var name = document.getElementById('username').value;
+	var email = document.getElementById('emailadd').value;
+
+	$.ajax({
+		url: 'emailInsert',
+		type: 'post',
+		data: {
+			name: name,
+			email: email
+		},
+		success: function(result) {
+			location.reload();
+		},
+		error: function() {
+			console.log("error");
+		},
+	});
+});
+
+$(document).on('click', '#emailcancel', function(e) {
+	e.preventDefault();
+	window.open("about:blank", "_self").close();
+});
+
+/*$(document).on('click', '#emaildelete', function(e){
+	alert(e.value)
+	
+	var bid = e.value;
+	
+	alert(bid)
+	$.ajax({
+		url: 'emailDelete',
+		type: 'post',
+		data:{
+			bid : bid
+		},
+		success: function(result){
+		
+		},
+		error: function(){
+			console.log('error');
+		}
+	})
+});*/
+
+function emailDelete(e){
+	
+	alert(e.value)
+	var bid = e.value;
+		$.ajax({
+			url: "emailDelete" 
+			data: {
+				bid : bid
+			},
+			type: "post",
+			success: function(){
+				
+			},
+			error: function(){
+				
+			}
+			
+		})
+	
+};
+

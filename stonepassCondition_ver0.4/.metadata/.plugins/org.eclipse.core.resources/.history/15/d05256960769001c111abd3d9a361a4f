@@ -1,0 +1,5 @@
+package com.swempire.web.condition.controller;
+
+public class EmailController {
+
+}

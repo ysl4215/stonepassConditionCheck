@@ -1,0 +1,8 @@
+package com.swempire.web.condition.service;
+
+import com.swempire.web.condition.VO.EmailVO;
+
+public interface EmailService {
+	public EmailVO insertEmail(EmailVO emailvo) throws exception;
+	
+}

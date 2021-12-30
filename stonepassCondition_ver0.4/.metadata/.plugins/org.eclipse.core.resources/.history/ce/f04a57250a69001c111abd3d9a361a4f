@@ -1,0 +1,23 @@
+package com.swempire.web.condition.DAO;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.swempire.web.condition.VO.EmailVO;
+
+@Repository
+public class EmailDAOImpl implements EmailDAO{
+	
+	@Inject
+	private SqlSession sqlSession;
+	
+	
+	@Override
+	public EmailVO emailInsert() throws Exception {
+
+		return sqlSession.selectList("com.swempire.web.condition.emailMapper.emailInsert");
+	}
+
+}

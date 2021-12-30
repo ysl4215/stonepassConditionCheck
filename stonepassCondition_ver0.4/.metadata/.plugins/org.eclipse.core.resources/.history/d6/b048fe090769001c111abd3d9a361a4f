@@ -1,0 +1,5 @@
+package com.swempire.web.condition.DAO;
+
+public interface EmailDAO {
+
+}

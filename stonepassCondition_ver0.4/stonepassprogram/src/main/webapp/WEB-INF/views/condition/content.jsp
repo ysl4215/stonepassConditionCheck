@@ -27,7 +27,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	$(document).on('click', '#cencle', function(e) {
+/* 	$(document).on('click', '#cencle', function(e) {
 		e.preventDefault();
 		window.open("about:blank", "_self").close();
 	});
@@ -36,16 +36,13 @@
 		$("#form_orga_modify").submit();
 		window.open("about:blank", "_self").close();
 	});
-
-	
-	
-	$(document).on('click', '#orga_delete', function(e) {
+ */
+ /* 	$(document).on('click', '#orga_delete', function(e) {
 		location.href = "/conditionDelete" + "?bid=" + ${contentboard.bid};
-		/* window.open("about:blank", "_self").close(); */
 		opener.parent.location.reload();
 		window.close();
 		opener.parent.location.reload();
-	});
+	});   */
 </script>
 </head>
 
@@ -64,7 +61,7 @@
 					class="form-control" type="text" id="orga_url" name="orga_url"
 					value="${contentboard.orga_url}" />
 			</div>
-			<input type="hidden" value="${contentboard.bid}" name="bid">
+			<input type="hidden" id ="bid" value="${contentboard.bid}" name="bid">
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="orga_modify">수정</button>
 				<button class="cencle btn btn-danger" type="button" id="cencle">취소</button>
@@ -74,7 +71,8 @@
 
 	</section>
 
-
+<script src="/resources/common/js/condition/content.js">
+</script>
 </body>
 
 </html>

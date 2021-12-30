@@ -1,0 +1,13 @@
+package com.swempire.web.condition.DAO;
+
+import com.swempire.web.condition.VO.EmailVO;
+
+public class EmailDAOImpl implements EmailDAO{
+
+	@Override
+	public EmailVO emailInsert() throws Exception {
+
+		return null;
+	}
+
+}

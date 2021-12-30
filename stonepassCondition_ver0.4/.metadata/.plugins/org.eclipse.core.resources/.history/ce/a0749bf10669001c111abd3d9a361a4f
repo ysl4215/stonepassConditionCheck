@@ -1,0 +1,5 @@
+package com.swempire.web.condition.service;
+
+public class EmailServiceImpl {
+
+}
