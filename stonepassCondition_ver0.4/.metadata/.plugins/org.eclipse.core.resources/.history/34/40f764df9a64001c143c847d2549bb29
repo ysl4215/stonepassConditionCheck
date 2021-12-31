@@ -1,9 +1,0 @@
-package com.swempire.web.condition.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller
-public class AjaxController {
-	
-	
-}
