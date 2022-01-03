@@ -54,6 +54,7 @@ function email(){
 		
 		
 		if (kdwthis.checked) {
+			showLoading();
 			values = 1
 		} else {
 			values = 0
@@ -70,6 +71,7 @@ function email(){
 
 				console.log(bid)
 				$("#condition" + bid).html(result);
+				hideLoading();
 			},
 			error : function() {
 				alert("error");
@@ -82,10 +84,13 @@ function email(){
 
 		// 1 . #checkAll 클릭
 		$("#checkAll").click(function() {
+			
+			
 
 			// 2. #checkAll이 체크되었을 때,
 			// chk라는 name을 가진 input태그를 찾아 checked를 true로 정의
 			if ($("#checkAll").prop("checked")) {
+				showLoading();
 				$("input[name=checkBoxId]").prop("checked", true)
 
 				var chkbox = $(".chkselect");
@@ -205,7 +210,7 @@ function email(){
 					console.log(bidArray[i] + "  " + result[i]);
 
 				}
-
+					hideLoading();
 			},
 			error : function() {
 				alert("error");
@@ -213,5 +218,12 @@ function email(){
 		});
 
 	}
-
+	
+/* 로딩화면 */
+function showLoading(){
+  $("#roadingStatus").show();
+}
+function hideLoading(){
+  $("#roadingStatus").hide();
+}
 

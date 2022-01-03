@@ -30,8 +30,16 @@ body {
 	padding-top: 70px;
 	padding-bottom: 30px;
 }
-</style>
 
+.spinner-border {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	width: 3rem;
+	height: 3rem;
+}
+</style>
 
 </head>
 
@@ -53,7 +61,11 @@ body {
 					class="onoff-switch"></span>
 				</label> <input type="hidden" id="result" name="result">
 			</div>
-
+			
+			<div class="spinner-border" role="status" id="roadingStatus" style="display: none;">
+				<span class="sr-only">Loading...</span>
+			</div>
+			
 			<div class="table-responsive">
 				<table class="table table-striped table-sm">
 					<colgroup>
@@ -87,7 +99,7 @@ body {
 									<tr>
 										<td><c:out value="${list.bid}" /></td>
 										<td><c:out value="${list.orga_name}" /></td>
-			
+
 										<td><a href="#" onclick="modify(${list.bid})"><c:out
 													value="${list.orga_url}" /></a></td>
 
@@ -109,7 +121,14 @@ body {
 		</div>
 	</article>
 
-<script src="/resources/common/js/condition/condition.js">
+	<script src="/resources/common/js/condition/condition.js">
+	/* 로딩화면 */
+	function showLoading(){
+	  $("#roadingStatus").show();
+	}
+	function hideLoading(){
+	  $("#roadingStatus").hide();
+	}
 </script>
 </body>
 </html>

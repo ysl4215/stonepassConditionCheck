@@ -12,7 +12,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMailUtil {
-	
+	public static void main(String[] args) throws AddressException, MessagingException {
+		send();
+	}
 	
 	private static String HOST="smtps.hiworks.com";
 	private static int PORT=465;
@@ -42,12 +44,6 @@ public class SendMailUtil {
 
 	public static void setTitle(String title) {
 		SendMailUtil.title = title + " CURL 연결상태 불량입니다";
-	}
-
-	
-	
-	public static void main(String[] args) throws AddressException, MessagingException {
-		send();
 	}
 	
 	public static void send() throws AddressException, MessagingException {

@@ -1,0 +1,34 @@
+package com.swempire.web.comm.util;
+
+import javax.inject.Inject;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+
+import com.swempire.web.condition.VO.ConditionVO;
+import com.swempire.web.condition.VO.EmailVO;
+import com.swempire.web.condition.controller.RestConditionController;
+import com.swempire.web.condition.service.ConditionService;
+
+@Component
+public class Scheduler{
+
+	
+	@Inject
+	ConditionService conditionservice;
+	
+	
+	  @Scheduled(fixedDelay = 3000) public boolean autoUpdate() throws Exception {
+	  
+		  conditionservice.getBoardList();
+	  
+	return false;
+	  
+	  }
+	 
+	
+	
+
+	
+}
