@@ -63,11 +63,12 @@ public class ConditionBoardController {
 
 	}
 
-	@RequestMapping(value = "/conditionModify", method = RequestMethod.POST)
+	@RequestMapping(value = "/condition/conditionModify", method = RequestMethod.POST)
 	public String conditionModify(@RequestParam(required = false, defaultValue = "1") String orga_name,
 			@RequestParam(required = false, defaultValue = "1") String orga_url,
 			@RequestParam(required = false, defaultValue = "1") int bid, ConditionVO conditionvo) throws Exception {
-
+		System.out.println(orga_url);
+		System.out.println(orga_name);
 		conditionvo.setBid(bid);
 		conditionvo.setOrga_name(orga_name);
 		conditionvo.setOrga_url(orga_url);

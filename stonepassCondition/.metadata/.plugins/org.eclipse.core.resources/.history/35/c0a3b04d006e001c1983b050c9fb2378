@@ -1,0 +1,52 @@
+$(document).on('click', '#emailinsert', function(e) {
+	
+	 if (!checkEmail(form.orga_name.value)) {
+            return false;
+        } else if (!checkName(form.orga_url.value)) {
+			return false;
+}
+
+	var name = document.getElementById('username').value;
+	var email = document.getElementById('emailadd').value;
+
+	$.ajax({
+		url: 'emailInsert',
+		type: 'post',
+		data: {
+			name: name,
+			email: email
+		},
+		success: function(result) {
+			location.reload();
+		},
+		error: function() {
+			console.log("error");
+		},
+	});
+});
+
+$(document).on('click', '#emailcancel', function(e) {
+	e.preventDefault();
+	window.open("about:blank", "_self").close();
+});
+
+function emailDelete(e){
+	var bid = e.value;
+		$.ajax({
+			url: "emailDelete", 
+			data: {
+				bid : bid
+			},
+			type: "post",
+			success: function(){
+				
+				location.reload();
+			},
+			error: function(){
+				alert('error');
+			}
+			
+		})
+	
+};
+

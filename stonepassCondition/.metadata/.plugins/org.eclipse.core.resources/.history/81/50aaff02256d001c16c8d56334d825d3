@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1 id="main">안녕하세요</h1>
+	
+	<script type="text/javascript" src="/resources/common/js/NewFile.js">
+	</script>
+</body>
+</html>

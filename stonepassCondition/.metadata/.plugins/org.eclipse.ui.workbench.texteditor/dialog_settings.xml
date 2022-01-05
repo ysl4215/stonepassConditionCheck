@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="checkAll"/>
+		<item key="selection" value="orga_modify"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="orga_modify"/>
+			<item value="alert"/>
+			<item value="assets"/>
+			<item value="js"/>
+			<item value="ist/css/bootstrap.min.css\"/>
+			<item value="기관 등록"/>
+			<item value="navbar"/>
 			<item value="checkAll"/>
-			<item value="Chk"/>
-			<item value="body"/>
-			<item value="switch-button"/>
-			<item value="onoff-switch:before"/>
-			<item value="system"/>
-			<item value="mail"/>
-			<item value="emailbid"/>
 		</list>
 		<list key="replacehistory">
 		</list>

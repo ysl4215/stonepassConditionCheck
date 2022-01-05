@@ -1,0 +1,76 @@
+$(document).on('click', '#emailinsert', function(e) {
+	
+	 if (!checkEmail(form_mail.emailadd.value)) {
+            return false;
+        } else if (!checkName(form.orga_url.value)) {
+			return false;
+}
+
+	var name = document.getElementById('username').value;
+	var email = document.getElementById('emailadd').value;
+
+	$.ajax({
+		url: 'emailInsert',
+		type: 'post',
+		data: {
+			name: name,
+			email: email
+		},
+		success: function(result) {
+			location.reload();
+		},
+		error: function() {
+			console.log("error");
+		},
+	});
+});
+
+$(document).on('click', '#emailcancel', function(e) {
+	e.preventDefault();
+	window.open("about:blank", "_self").close();
+});
+
+//이메일 삭제버튼 클릭
+function emailDelete(e){
+	var bid = e.value;
+		$.ajax({
+			url: "emailDelete", 
+			data: {
+				bid : bid
+			},
+			type: "post",
+			success: function(){
+				
+				location.reload();
+			},
+			error: function(){
+				alert('error');
+			}
+		})
+};
+
+
+// 공백확인 함수
+function checkExistData(value, dataName) {
+        if (value == "") {
+            alert(dataName + " 입력해주세요!");
+            return false;
+        }
+        return true;
+    }
+    
+function checkEmail(email) {
+        //Id가 입력되었는지 확인하기
+        if (!checkExistData(email, "E-mail을"))
+            return false;
+ 
+       /* var idRegExp = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
+        if (!idRegExp.test(id)) {
+            alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+            form.userId.value = "";
+            form.userId.focus();
+            return false;
+        }*/
+        return true; //확인이 완료되었을 때
+    }
+

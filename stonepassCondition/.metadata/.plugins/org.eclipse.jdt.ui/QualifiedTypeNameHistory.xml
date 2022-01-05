@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
@@ -25,27 +24,40 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.swempire.web.condition.DAO.EmailDAO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
     <fullyQualifiedTypeName name="com.google.protobuf.Message"/>
     <fullyQualifiedTypeName name="com.mysql.cj.Session"/>
     <fullyQualifiedTypeName name="com.swempire.web.condition.service.EmailService"/>
     <fullyQualifiedTypeName name="com.swempire.web.comm.util.SendMailUtil"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="org.springframework.scheduling.annotation.Scheduled"/>
-    <fullyQualifiedTypeName name="com.swempire.web.comm.util.Scheduler"/>
-    <fullyQualifiedTypeName name="com.swempire.web.condition.controller.RestConditionController"/>
-    <fullyQualifiedTypeName name="javax.inject.Inject"/>
     <fullyQualifiedTypeName name="com.swempire.web.condition.service.ConditionService"/>
-    <fullyQualifiedTypeName name="com.swempire.web.condition.Curl"/>
     <fullyQualifiedTypeName name="com.swempire.web.condition.Curl2"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.swempire.web.condition.VO.ConditionVO"/>
+    <fullyQualifiedTypeName name="org.quartz.SchedulerListener"/>
+    <fullyQualifiedTypeName name="org.quartz.Job"/>
+    <fullyQualifiedTypeName name="org.quartz.JobDataMap"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="org.quartz.SchedulerFactory"/>
+    <fullyQualifiedTypeName name="org.quartz.impl.StdSchedulerFactory"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+    <fullyQualifiedTypeName name="org.quartz.Trigger"/>
+    <fullyQualifiedTypeName name="org.springframework.scheduling.Trigger"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler"/>
+    <fullyQualifiedTypeName name="com.swempire.web.comm.util.Scheduler"/>
     <fullyQualifiedTypeName name="com.swempire.web.condition.VO.EmailVO"/>
+    <fullyQualifiedTypeName name="com.swempire.web.condition.Curl"/>
+    <fullyQualifiedTypeName name="com.swempire.web.comm.util.Curl2"/>
+    <fullyQualifiedTypeName name="com.swempire.web.condition.controller.RestConditionController"/>
+    <fullyQualifiedTypeName name="com.swempire.web.condition.VO.ServiceTestVO"/>
+    <fullyQualifiedTypeName name="javax.inject.Inject"/>
+    <fullyQualifiedTypeName name="com.swempire.web.condition.DAO.EmailDAO"/>
 </qualifiedTypeNameHistroy>

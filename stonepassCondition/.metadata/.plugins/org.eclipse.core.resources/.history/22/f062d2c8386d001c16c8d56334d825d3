@@ -1,0 +1,70 @@
+package com.swempire.web.condition.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.swempire.web.comm.util.Curl;
+import com.swempire.web.condition.DAO.CurlDAO;
+import com.swempire.web.condition.VO.ConditionVO;
+import com.swempire.web.condition.VO.ServiceTestVO;
+import com.swempire.web.condition.controller.RestConditionController;
+
+@Service
+public class CurlServiceImpl implements CurlService {
+
+	@Inject
+	CurlDAO curldao;
+	
+	@Inject
+	RestConditionController restconditioncontroller;
+
+	Curl curl = new Curl();
+	
+	ServiceTestVO servicetestvo = new ServiceTestVO();
+
+	@Override
+	public void curlShoot() throws Exception {
+
+		System.out.println("shoot");
+		Curl curl = new Curl();
+
+		String[] headers = null;
+
+		curl.get("https://login.daegu.ac.kr/stonepass/sp/v1/fido/facets", headers);
+
+	}
+
+	@Override
+	public ConditionVO orgaSelect(ConditionVO conditionvo) throws Exception {
+
+		return curldao.orgaSelect(conditionvo);
+	}
+
+	@Override
+	public List<ConditionVO> orgaListSelect(ConditionVO conditionvo, ServiceTestVO servicetestvo) throws Exception {
+		
+		
+		int checked = servicetestvo.getChecked();
+		int[] bidArray = servicetestvo.getBidArray();
+		
+		System.out.println(111111111);
+		System.out.println(checked);
+		System.out.println(bidArray);
+		System.out.println(11111);
+		
+		List<ConditionVO> list = curldao.orgaListSelect(conditionvo);
+		
+		if(checked ==1) {
+			conditionvo.setBidArray(bidArray);
+			
+			
+			
+		}
+		
+		return curldao.orgaListSelect(conditionvo);
+	}
+
+}

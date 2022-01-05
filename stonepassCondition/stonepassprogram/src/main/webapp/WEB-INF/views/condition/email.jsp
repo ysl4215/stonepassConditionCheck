@@ -22,16 +22,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-		<form target="popup_window" id="form_mail" name="form_mail"
+		<form target="popup_window" id="form" name="form"
 			method="post" action="emailInsert" >
 			<div class="form-group has-feedback">
-				<label class="control-label" for="email">메일주소</label> <input
-					class="form-control" type="text" id="emailadd" name="emailadd" />
+				<label class="control-label" for="email">e-mail주소</label> <input
+					class="form-control" type="text" id="emailadd" name="emailadd" placeholder="e-mail" autofocus />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="name">이름</label> <input
-					class="form-control" type="text" id="username" name="username" />
+					class="form-control" type="text" id="username" name="username" placeholder="이름"/>
 					
 			</div>
 			<div class="form-group has-feedback">
@@ -39,6 +38,7 @@
 				<button class="cencle btn btn-danger" type="button" id="emailcancel">닫기</button>
 			</div>
 		</form>
+		
 		
 		<article>
 		<div class="container">

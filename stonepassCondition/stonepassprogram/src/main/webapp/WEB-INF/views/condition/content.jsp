@@ -2,10 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
 <!DOCTYPE html>
-
 
 <html>
 <head>
@@ -16,7 +13,7 @@
 
 <!-- common CSS -->
 <link rel="stylesheet"
-	href="<c:url value='/resources/common/css/commona.css'/>">
+	href="/resources/common/css/common.css">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -26,31 +23,13 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-/* 	$(document).on('click', '#cencle', function(e) {
-		e.preventDefault();
-		window.open("about:blank", "_self").close();
-	});
-
-	$(document).on('click', '#orga_modify', function(e) {
-		$("#form_orga_modify").submit();
-		window.open("about:blank", "_self").close();
-	});
- */
- /* 	$(document).on('click', '#orga_delete', function(e) {
-		location.href = "/conditionDelete" + "?bid=" + ${contentboard.bid};
-		opener.parent.location.reload();
-		window.close();
-		opener.parent.location.reload();
-	});   */
-</script>
 </head>
-
 <body>
 	<section id="container">
 
-		<form target="popup_window" id="form_orga_modify"
-			name="form_orga_modify" method="post" action="/conditionModify">
+		<!-- <form target="popup_window" id="form_orga_modify"
+			name="form_orga_modify" method="post" action="/conditionModify"> -->
+			<form name="form">
 			<div class="form-group has-feedback">
 				<label class="control-label" for="orgaName">기관이름</label> <input
 					class="form-control" type="text" id="orga_name" name="orga_name"
@@ -63,11 +42,12 @@
 			</div>
 			<input type="hidden" id ="bid" value="${contentboard.bid}" name="bid">
 			<div class="form-group has-feedback">
-				<button class="btn btn-success" type="submit" id="orga_modify">수정</button>
+				<button class="btn btn-success" type="button" id="orga_modify">수정</button>
 				<button class="cencle btn btn-danger" type="button" id="cencle">취소</button>
 				<button class="btn btn-success" type="button" id="orga_delete">삭제</button>
 			</div>
-		</form>
+			</form>
+		<!-- </form> -->
 
 	</section>
 
