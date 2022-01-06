@@ -15,10 +15,8 @@ import com.swempire.web.comm.util.SendMailUtil;
 import com.swempire.web.condition.VO.ConditionVO;
 import com.swempire.web.condition.VO.EmailVO;
 import com.swempire.web.condition.VO.ServiceTestVO;
-import com.swempire.web.condition.service.ConditionService;
 import com.swempire.web.condition.service.CurlService;
 import com.swempire.web.condition.service.EmailService;
-
 
 @RestController
 public class RestConditionController {
@@ -33,9 +31,60 @@ public class RestConditionController {
 	Curl curl = new Curl();
 	SendMailUtil smu = new SendMailUtil();
 
+	@RequestMapping(value = "/conditionCurlArray", method = RequestMethod.POST)
+	public String[] curlArray(@RequestParam(required = false, defaultValue = "null", value = "bidArray") int[] bidArray,
+			@RequestParam(required = false, defaultValue = "null", value = "values") String values,
+			ConditionVO conditionvo, Model model, EmailVO emailvo, ServiceTestVO servicetestvo) throws Exception {
 
-	
-	
+		int checked = Integer.parseInt(values);
+		servicetestvo.setChecked(checked);
+		servicetestvo.setBidArray(bidArray);
+
+		List<ConditionVO> list = curlService.orgaListSelect(conditionvo, servicetestvo, emailvo);
+
+		String[] arr = new String[list.size()];
+
+		List<EmailVO> emailList = emailservice.emailListSelect();
+
+		return curlService.getArr();
+	}
+
+	@RequestMapping(value = "/conditionCurl", method = RequestMethod.POST)
+	public String curl(@RequestParam("values") String values, @RequestParam("bid") String bid, ConditionVO conditionvo,
+			Model model) throws Exception {
+
+		int intbid = Integer.parseInt(bid);
+
+		int checked = Integer.parseInt(values);
+
+		if (checked == 1) {
+			conditionvo.setBid(intbid);
+
+			curlService.orgaSelect(conditionvo);
+
+			String strUrl = curlService.orgaSelect(conditionvo).getOrga_url();
+
+			curl.get(strUrl, null);
+
+			int curlCode = curl.getCurlCode();
+			int errorNum = curl.getErrorNum();
+
+			if (curlCode == 200 && errorNum != 0) {
+				String condition = "O";
+				model.addAttribute("condition", condition);
+
+				return condition;
+			} else if (curlCode != 200 || errorNum == 0) {
+				String condition = "X";
+				model.addAttribute("condition", condition);
+
+				return condition;
+			}
+		} else if (checked == 0) {
+			return "";
+		}
+		return "";
+	}
 
 //	@RequestMapping(value = "/conditionCurlArray", method = RequestMethod.POST)
 //	public String[] curlArray(@RequestParam(required = false, defaultValue = "null", value = "bidArray") int[] bidArray,
@@ -98,79 +147,4 @@ public class RestConditionController {
 //		return arr;
 //
 //	}
-	
-	@RequestMapping(value = "/conditionCurlArray", method = RequestMethod.POST)
-	public String[] curlArray(@RequestParam(required = false, defaultValue = "null", value = "bidArray") int[] bidArray,
-			@RequestParam(required = false, defaultValue = "null", value = "values") String values,
-			ConditionVO conditionvo, Model model, EmailVO emailvo,ServiceTestVO servicetestvo) throws Exception {
-
-		int checked = Integer.parseInt(values);
-		servicetestvo.setChecked(checked);
-		servicetestvo.setBidArray(bidArray);
-
-		List<ConditionVO> list = curlService.orgaListSelect(conditionvo, servicetestvo, emailvo);
-
-		String[] arr = new String[list.size()];
-
-		List<EmailVO> emailList = emailservice.emailListSelect();
-
-		/*
-		 * if (checked == 1) { System.out.println(curlService.getArr());
-		 * 
-		 * return curlService.getArr(); }
-		 */
-
-		return curlService.getArr();
-	}
-
-	@RequestMapping(value = "/conditionCurl", method = RequestMethod.POST)
-	public String curl(@RequestParam("values") String values, @RequestParam("bid") String bid, ConditionVO conditionvo,
-			Model model) throws Exception {
-
-		int intbid = Integer.parseInt(bid);
-
-		int checked = Integer.parseInt(values);
-
-		if (checked == 1) {
-			conditionvo.setBid(intbid);
-
-			curlService.orgaSelect(conditionvo);
-
-			String strUrl = curlService.orgaSelect(conditionvo).getOrga_url();
-
-			curl.get(strUrl, null);
-
-			System.out.println(curl.getCurlCode());
-
-			int curlCode = curl.getCurlCode();
-			int errorNum = curl.getErrorNum();
-
-			System.out.println(errorNum + "gggg");
-
-			if (curlCode == 200 && errorNum != 0) {
-				System.out.println("연결상태 양호");
-
-				String condition = "O";
-
-				model.addAttribute("condition", condition);
-
-				return condition;
-
-			} else if (curlCode != 200 || errorNum == 0) {
-				System.out.println("연결상태 불량");
-
-				String condition = "X";
-
-				model.addAttribute("condition", condition);
-
-				return condition;
-			}
-
-		} else if(checked==0) {
-			return "";
-		}
-		return "";
-
-	}
-
 }

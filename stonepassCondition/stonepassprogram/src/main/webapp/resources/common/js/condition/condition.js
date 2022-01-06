@@ -1,3 +1,10 @@
+$(document).ready(function() {
+
+$('#loading').hide();
+
+});
+
+
 
 // condition.jsp
 function email() {
@@ -27,7 +34,7 @@ function modify(bid) {
 	url = url + "?bid=" + bid;
 
 	let popUrl = url
-	let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
+	let popOption = "width = 650px, height=300px, top=300px, left=300px, scrollbars=yes";
 
 	window.open(popUrl, "기관 수정", popOption);
 
@@ -47,62 +54,15 @@ function openPopup() {
 }
 
 
-//CURL 단일 버튼
-/*function kdw(kdwthis) {
-
-	var bid = kdwthis.value
-
-	var checked = 0;
-	
-	var $request;
-	
-	if (kdwthis.checked) {
-		showLoading();
-		checked = 1;
-		
-		
-	} else {
-		checked = 0;	
-		
-		
-	}
-
-
-
-
-var xhr = $.ajax({
-		url: "conditionCurl",
-		type: 'post',
-		data: {
-			values: checked,
-			bid: bid
-		},
-		success: function(result) {
-			
-			console.log(bid)
-			$("#condition" + bid).html(result);
-			hideLoading();
-		},
-		error: function() {
-			alert("error");
-		}
-	});	
-	
-
-}*/
+//CURL 단일버튼
 function kdw(kdwthis) {
-
 	var bid = kdwthis.value
-
 	var checked = 0;
 	
-	if (kdwthis.checked) {
-		showLoading();
-		checked = 1;
-		
-		
-	} else {
-		
+	if (kdwthis.checked) {		
+		checked = 1;		
+		 $('#loading').show();
+	} else {		
 		checked = 0;		
 	}
 	$.ajax({
@@ -113,79 +73,56 @@ function kdw(kdwthis) {
 			bid: bid
 		},
 		success: function(result) {
-			
 			console.log(bid)
 			$("#condition" + bid).html(result);
-			hideLoading();
+		/*	hideLoading();*/
+			$('#loading').hide();
 		},
 		error: function() {
 			alert("error");
 		}
 	});	
-	
-
-
 }
-
-
 
 //CURL 전체연결 버튼
 function checkall() {
 	// 2. #checkAll이 체크되었을 때,
 	// chk라는 name을 가진 input태그를 찾아 checked를 true로 정의
 	if ($("#checkAll").prop("checked")) {
-
-
-
+		 $('#loading').show();
 		timerId = setTimeout(checkall, 20000);
-
-		showLoadingAll();
 		$("input[name=checkBoxId]").prop("checked", true)
 
 		var chkbox = $(".chkselect");
-
 		var chkall = document.getElementById('checkAll');
 
 		for (i = 0; i < chkbox.length; i++) {
-
 			chkbox[i].checked = checkAll.checked;
-
-		}
+		}	
 		//버튼 활성화시 Chk()로 이동
 		Chk();
-
 		// 3. #checkAll이 체크되지 않았을 때,
 		// chk라는 name을 가진 input태그를 찾아 checked를 false로 정의
 	} else {
 		$("input[name=checkBoxId]").prop("checked", false)
-		hideLoadingAll();
+		/*hideLoadingAll();*/
+		$('#loading').hide();
 		//버튼 해제시 ChkOff()로 이동
 		ChkOff();
-
 	}
 }
 
-
 function ChkOff() {
-
 	var result = Array();
-
 	var cnt = 0;
-
 	var chkbox = $(".chkselect");
 
 	for (i = 0; i < chkbox.length; i++) {
-
 		if (chkbox[i].checked == false) {
-
 			result[cnt] = chkbox[i].value;
-
 			cnt++;
-
 		}
-
 	}
-
 	var values = 0;
 	var bidArray = result;
 
@@ -195,21 +132,14 @@ function ChkOff() {
 		dataType: "JSON",
 		traditional: true, //필수
 		data: {
-
 			values: values,
 			bidArray: bidArray
-
 		},
 		success: function(result) {
-
 			for (var i = 0; i < bidArray.length; i++) {
-
 				$("#condition" + bidArray[i]).html(result[i]);
-
 				console.log(bidArray[i] + "  " + result[i]);
-
 			}
-
 		},
 		error: function() {
 			alert("error");
@@ -219,25 +149,15 @@ function ChkOff() {
 }
 
 function Chk() {
-
 	var result = Array();
-
 	var cnt = 0;
-
 	var chkbox = $(".chkselect");
-
 	for (i = 0; i < chkbox.length; i++) {
-
 		if (chkbox[i].checked == true) {
-
 			result[cnt] = chkbox[i].value;
-
 			cnt++;
-
 		}
-
 	}
-
 	var bidArray = result;
 	var values = 1;
 	$.ajax({
@@ -248,17 +168,14 @@ function Chk() {
 		data: {
 		bidArray: bidArray,
 		values: values
-
 	},
 		success: function(result) {
-
 			for (var i = 0; i < bidArray.length; i++) {
-
 				$("#condition" + bidArray[i]).html(result[i]);
-
 				console.log(bidArray[i] + "  " + result[i]);
 			}
-			hideLoadingAll();
+			/*hideLoadingAll();*/
+			$('#loading').hide();
 		},
 		error: function() {
 			alert("error");
@@ -267,16 +184,5 @@ function Chk() {
 }
 
 /* 로딩화면 */
-function showLoadingAll() {
-	$("#roadingStatusall").show();
-}
-function hideLoadingAll() {
-	$("#roadingStatusall").hide();
-}
-
-function showLoading() {
-	$("#roadingStatus").show();
-}
-function hideLoading() {
-	$("#roadingStatus").hide();
-}
+//$('#loading').show();
+//$('#loading').hide();

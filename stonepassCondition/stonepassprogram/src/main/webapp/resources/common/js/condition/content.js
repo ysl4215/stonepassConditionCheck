@@ -14,7 +14,8 @@ $(document).on('click', '#orga_modify', function(e) {
 	var confirmflag = confirm("수정하시겠습니까?");
 
 	if (confirmflag) {
-		var bid = document.querySelector('#bid').getAttribute('value');
+		/*var bid = document.querySelector('#bid').value;*/
+		var bid = document.getElementById('bid').value;
 		var orga_name = document.getElementById('orga_name').value;
 		var orga_url = document.getElementById('orga_url').value;
 

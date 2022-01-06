@@ -10,8 +10,7 @@
 <meta charset="UTF-8">
 
 <!-- common CSS -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/common/css/common.css'/>">
+<link rel="stylesheet" href="/resources/common/css/common.css">
 
 <!-- Bootstrap CSS -->
 <link href="/resources/common/css/bootstrap.min.css" rel="stylesheet">
@@ -34,15 +33,12 @@
 			
 			 <input	type="text" id="orga_name" name="orga_name" class="form-control"
 				placeholder="Organization" autofocus>
-				
 				 <br>
 				  URL 주소 
 				 <label for="orga_url" class="sr-only">URL</label>
 	 
-				 <input type="text" name="orga_url"	id="orga_url" class="form-control" placeholder="URL" required>
-				 
+				 <input type="text" name="orga_url"	id="orga_url" class="form-control" placeholder="URL" required>		 
 			<br>
-
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="button" id="orga_insert">기관등록</button>
 				<button class="cencle btn btn-danger" id="cencle" type="button">취소</button>

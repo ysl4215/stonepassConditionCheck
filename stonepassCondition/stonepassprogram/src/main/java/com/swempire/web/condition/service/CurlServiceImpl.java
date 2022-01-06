@@ -23,22 +23,14 @@ public class CurlServiceImpl implements CurlService {
 	
 	@Inject
 	EmailDAO emaildao;
-	
-	
+		
 	@Inject
 	RestConditionController restconditioncontroller;
-
-	Curl curl = new Curl();
-	
-	ServiceTestVO servicetestvo = new ServiceTestVO();
-	
-	String condition;
-	
 	SendMailUtil smu = new SendMailUtil();
-
+	ServiceTestVO servicetestvo = new ServiceTestVO();
+	Curl curl = new Curl();
+	String condition;
 	String[] arr;
-	
-	
 
 	public String[] getArr() {
 		return arr;
@@ -51,9 +43,7 @@ public class CurlServiceImpl implements CurlService {
 	@Override
 	public void curlShoot() throws Exception {
 
-		System.out.println("shoot");
 		Curl curl = new Curl();
-
 		String[] headers = null;
 
 		curl.get("https://login.daegu.ac.kr/stonepass/sp/v1/fido/facets", headers);
@@ -77,14 +67,11 @@ public class CurlServiceImpl implements CurlService {
 		List<ConditionVO> list = curldao.orgaListSelect(conditionvo);
 		String[] arr = new String[list.size()];
 		List<EmailVO> emailList = emaildao.emailListSelect();
-if (checked == 1) {
 		
-			
-			
+if (checked == 1) {					
 			conditionvo.setBidArray(bidArray);
 
-			for (int i = 0; i < list.size(); i++) {
-			
+			for (int i = 0; i < list.size(); i++) {			
 				list.get(i).getOrga_url();
 				curl.get(list.get(i).getOrga_url(), null);
 
@@ -95,8 +82,6 @@ if (checked == 1) {
 
 					this.condition = "O";
 				} else if (curlCode != 200 || errorNum == 0) {
-					System.out.println(list.get(i).getBid());
-
 					// 에러발생한 기관(bid) Select
 					emailvo.setBid(list.get(i).getBid());
 					emaildao.emailErrorOrganameSelect(emailvo);
@@ -114,17 +99,10 @@ if (checked == 1) {
 					}
 					this.condition = "X";
 				}
-
 				arr[i] = condition;
-
 			}
-			
-			this.arr = arr;
-			
-		}
-
-
-		
+			this.arr = arr;	
+		}		
 		return curldao.orgaListSelect(conditionvo);
 	}
 

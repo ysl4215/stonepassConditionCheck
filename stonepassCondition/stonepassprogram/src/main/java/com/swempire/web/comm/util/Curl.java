@@ -388,11 +388,8 @@ public class Curl {
 				while ( (line = br.readLine()) != null ) {
 					sb.append(line);
 				}
-				
-				ret = sb.toString();
-				
+				ret = sb.toString();	
 			}
-			
 			logger.info("[Delete] Response::: " + ret);
 			
 		} catch (ProtocolException e) {
@@ -404,9 +401,7 @@ public class Curl {
 			if ( br != null ) try { br.close(); }catch(IOException e) {}
 			if ( hurlc != null ) hurlc.disconnect();
 		}
-		
-		return ret;
-		
+		return ret;	
 	}
 	
 	private static HttpURLConnection getHttpUrlConnection(String strUrl)   {

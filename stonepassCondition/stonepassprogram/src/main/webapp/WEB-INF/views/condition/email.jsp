@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 
 <!-- common CSS -->
-<%-- <link rel="stylesheet"
-	href="<c:url value='/resources/common/css/common.css'/>"> --%>
+<link rel="stylesheet"
+	href="/resources/common/css/common.css">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -26,27 +26,22 @@
 			method="post" action="emailInsert" >
 			<div class="form-group has-feedback">
 				<label class="control-label" for="email">e-mail주소</label> <input
-					class="form-control" type="text" id="emailadd" name="emailadd" placeholder="e-mail" autofocus />
+					class="form-control" type="text" id="emailadd" name="emailadd"
+					 placeholder="e-mail" autofocus />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="name">이름</label> <input
-					class="form-control" type="text" id="username" name="username" placeholder="이름"/>
-					
+					class="form-control" type="text" id="username" name="username" placeholder="이름"/>		
 			</div>
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="button" id="emailinsert">e-mail 등록</button>
 				<button class="cencle btn btn-danger" type="button" id="emailcancel">닫기</button>
 			</div>
 		</form>
-		
-		
+				
 		<article>
 		<div class="container">
-		
-
 			<br>
-		
-
 			<div class="table-responsive">
 				<table class="table table-striped table-sm">
 					<colgroup>
@@ -54,9 +49,7 @@
 						<col style="width: 20%;" />
 						<col style="width: 40%;" />
 						<col style="width: 10%" />
-						
 					</colgroup>
-
 					<thead>
 						<tr>
 							<th>NO</th>
@@ -64,7 +57,6 @@
 							<th>E-Mail 주소</th>
 						</tr>
 					</thead>
-
 					<tbody>
 						<c:choose>
 							<c:when test="${empty emaillist }">
@@ -80,7 +72,8 @@
 										<td><c:out value="${list.name}" /></td>
 										<td><c:out value="${list.email}" /></td>	
 										<td>
-											<button onclick="emailDelete(this)" id = "emaildelete" name= "emaildelete" value="${list.bid}">삭제</button>								
+											<button onclick="emailDelete(this)" id = "emaildelete"
+											 name= "emaildelete" value="${list.bid}">삭제</button>								
 										</td>														
 									</tr>
 								</c:forEach>
@@ -91,7 +84,6 @@
 			</div>
 		</div>
 	</article>
-		
 		<script src="/resources/common/js/condition/email.js" >
 		</script>
 </body>

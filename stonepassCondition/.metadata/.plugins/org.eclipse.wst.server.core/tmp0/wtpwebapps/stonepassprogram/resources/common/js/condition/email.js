@@ -28,6 +28,7 @@ $(document).on('click', '#emailinsert', function(e) {
 });
 
 $(document).on('click', '#emailcancel', function(e) {
+	
 	e.preventDefault();
 	window.open("about:blank", "_self").close();
 });
@@ -35,6 +36,9 @@ $(document).on('click', '#emailcancel', function(e) {
 //이메일 삭제버튼 클릭
 function emailDelete(e){
 	var bid = e.value;
+	var confirmBoolean = confirm("삭제하시겠습니까?");
+	
+	if(confirmBoolean){
 		$.ajax({
 			url: "emailDelete", 
 			data: {
@@ -49,6 +53,12 @@ function emailDelete(e){
 				alert('error');
 			}
 		})
+		return true;
+	} else{
+		return false;
+	}
+	
+		
 };
 
 
