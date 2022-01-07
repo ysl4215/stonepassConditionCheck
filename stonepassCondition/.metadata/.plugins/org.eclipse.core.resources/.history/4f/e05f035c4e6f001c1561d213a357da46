@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.swempire.web.condition.emailMapper">
+
+<select id="emailListSelect" resultType="com.swempire.web.condition.VO.EmailVO">
+	select * from email_board LIMIT #{startList}, #{listSize}
+</select>
+
+<select id="getBoardListCnt" resultType="int">
+	SELECT count(*) as listCnt FROM TBL_BOARD
+</select>
+
+<insert id="emailInsert" parameterType="com.swempire.web.condition.VO.EmailVO">
+	insert into email_board (bid, email, name) values (#{bid}, #{email}, #{name})
+</insert>
+
+<delete id="emailDelete" parameterType="com.swempire.web.condition.VO.EmailVO">
+	delete from email_board where bid = #{bid}
+</delete>
+
+<select id ="emailErrorOrganameSelect" parameterType="com.swempire.web.condition.VO.EmailVO" resultType="com.swempire.web.condition.VO.EmailVO">
+	select orga_name from condition_board where bid =#{bid}
+</select>
+
+</mapper>

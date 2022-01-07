@@ -61,7 +61,6 @@ function emailDelete(e){
 		
 };
 
-
 // 공백확인 함수
 function checkExistData(value, dataName) {
         if (value == "") {
@@ -73,16 +72,9 @@ function checkExistData(value, dataName) {
     
 function checkEmail(email) {
         //Id가 입력되었는지 확인하기
-        if (!checkExistData(email, "E-mail을"))
-            return false;
- 
-       /* var idRegExp = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
-        if (!idRegExp.test(id)) {
-            alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
-            form.userId.value = "";
-            form.userId.focus();
-            return false;
-        }*/
+        if (!checkExistData(email, "E-mail을")){
+            return false;	
+			}
         return true; //확인이 완료되었을 때
     }
     
@@ -90,24 +82,35 @@ function checkEmail(email) {
         //mail이 입력되었는지 확인하기
         if (!checkExistData(name, "이름을")){
 	        return false;
-}
+		}
             return true;  
-                
-        /*if(url.indexOf("http://") == 0 || url.indexOf("https://") == 0){
-	
-	return true;  //확인이 완료되었을 때
-} else {
-	alert("http:// 또는 https:// 를 입력해주세요")
-	form.orga_url.focus();
-	return false;
-}
- 
-        var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
-        if (!emailRegExp.test(url)) {
-            alert("URL 형식이 올바르지 않습니다!");
-            form.mail.value = "";
-            form.mail.focus();
-            return false;
-        }*/
-    }
+       }
 
+//이전 버튼 이벤트
+function fn_prev(page, range, rangeSize) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = "/email";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		location.href = url;
+	}
+
+  //페이지 번호 클릭
+	function fn_pagination(page, range, rangeSize, searchType, keyword) {
+		var url = "/email";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		location.href = url;	
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangeSize) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = "/email";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		alert(url)
+		location.href = url;
+	}

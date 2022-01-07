@@ -55,6 +55,7 @@ body {
 }
 
 /* page-loading */
+/* z-index는 쌓임 순서를 정한다. position속성이 설정돼야 의미를 갖는다 */
 #loading {
 	width: 100%;
 	height: 100%;

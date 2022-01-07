@@ -1,7 +1,0 @@
-package com.swempire.web.comm.util;
-
-public class TestSend {
-	public static void main(String[] args) {
-		
-	}
-}	

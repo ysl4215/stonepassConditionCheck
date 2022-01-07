@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.swempire.web.condition.VO.EmailPaginationVO;
 import com.swempire.web.condition.VO.EmailVO;
 import com.swempire.web.condition.service.EmailService;
 
@@ -22,10 +23,17 @@ public class EmailController {
 	
 	
 	@RequestMapping(value= "/email", method = RequestMethod.GET)
-	public String email(Model model) throws Exception {
+	public String email(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+	@RequestParam(required = false, defaultValue = "1") int range, EmailPaginationVO pagination ) throws Exception {
 		
-		List<EmailVO> emaillist = emailservice.emailListSelect();
+		//전체 게시글 개수
+		int listCnt = emailservice.emailListCnt();
 		
+		pagination.pageInfo(page, range, listCnt);
+		
+		List<EmailVO> emaillist = emailservice.emailListLimitSelect(pagination);
+		
+		model.addAttribute("pagination", pagination);
 		model.addAttribute("emaillist", emaillist);
 		
 		return "/condition/email";
@@ -38,11 +46,9 @@ public class EmailController {
 		System.out.println(name+ "   "+email);
 		emailvo.setName(name);
 		emailvo.setEmail(email);
-		
-		
+				
 		emailservice.emailInsert(emailvo);
-		
-		
+				
 		return "redirect:/condition";
 	}
 	

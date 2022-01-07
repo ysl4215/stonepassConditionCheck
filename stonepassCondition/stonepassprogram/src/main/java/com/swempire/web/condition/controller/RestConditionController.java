@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.swempire.web.comm.util.Curl;
 import com.swempire.web.comm.util.SendMailUtil;
 import com.swempire.web.condition.VO.ConditionVO;
+import com.swempire.web.condition.VO.EmailPaginationVO;
 import com.swempire.web.condition.VO.EmailVO;
 import com.swempire.web.condition.VO.ServiceTestVO;
 import com.swempire.web.condition.service.CurlService;
@@ -34,17 +35,19 @@ public class RestConditionController {
 	@RequestMapping(value = "/conditionCurlArray", method = RequestMethod.POST)
 	public String[] curlArray(@RequestParam(required = false, defaultValue = "null", value = "bidArray") int[] bidArray,
 			@RequestParam(required = false, defaultValue = "null", value = "values") String values,
-			ConditionVO conditionvo, Model model, EmailVO emailvo, ServiceTestVO servicetestvo) throws Exception {
+			ConditionVO conditionvo, Model model, EmailVO emailvo, ServiceTestVO servicetestvo,
+			EmailPaginationVO pagination
+			) throws Exception {
 
 		int checked = Integer.parseInt(values);
 		servicetestvo.setChecked(checked);
 		servicetestvo.setBidArray(bidArray);
 
-		List<ConditionVO> list = curlService.orgaListSelect(conditionvo, servicetestvo, emailvo);
+		List<ConditionVO> list = curlService.orgaListSelect(conditionvo, servicetestvo, emailvo,pagination);
 
 		String[] arr = new String[list.size()];
 
-		List<EmailVO> emailList = emailservice.emailListSelect();
+		List<EmailVO> emailList = emailservice.emailListSelect(pagination);
 
 		return curlService.getArr();
 	}

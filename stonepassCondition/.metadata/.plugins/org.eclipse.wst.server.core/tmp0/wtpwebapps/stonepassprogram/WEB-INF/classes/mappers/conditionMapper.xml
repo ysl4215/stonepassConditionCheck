@@ -9,17 +9,6 @@
 		SELECT * FROM condition_board
 	</select>
 
-<!--  	<select id="getBoardContent"
-		resultType="com.swempire.web.condition.VO.ConditionVO"
-		parameterType="com.swempire.web.condition.VO.ConditionVO">
-		SELECT
-		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
-		FROM
-		TBL_BOARD
-		WHERE
-		BID = #{bid}
-	</select> -->
-
 	<insert id="insertBoard" parameterType="com.swempire.web.condition.VO.ConditionVO">
 		INSERT INTO condition_board (orga_name, orga_url) VALUES (#{orga_name}, #{orga_url})
 	</insert>
@@ -29,12 +18,10 @@
 	</select>
 	
 	<select id="orgaListSelect" resultType="com.swempire.web.condition.VO.ConditionVO" parameterType="com.swempire.web.condition.VO.ConditionVO" >
-	
 	SELECT orga_url,bid FROM condition_board where bid IN
 	<foreach collection="bidArray" item="arr" open="(" close=")" separator=",">
 	#{arr}
-	</foreach>
-	
+	</foreach>	
 	</select>
 	
 	<select id="contentBoard" resultType="com.swempire.web.condition.VO.ConditionVO" parameterType="com.swempire.web.condition.VO.ConditionVO">
@@ -42,13 +29,11 @@
 	</select>
 	
 	<update id="modifyBoard" parameterType="com.swempire.web.condition.VO.ConditionVO">
-		UPDATE condition_board SET orga_name = #{orga_name}, orga_url = #{orga_url}	WHERE
-		BID = ${bid}
+		UPDATE condition_board SET orga_name = #{orga_name}, orga_url = #{orga_url}	WHERE BID = ${bid}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
-		DELETE FROM condition_board
-		WHERE BID = #{bid}
+		DELETE FROM condition_board WHERE BID = #{bid}
 	</delete>
 	
 

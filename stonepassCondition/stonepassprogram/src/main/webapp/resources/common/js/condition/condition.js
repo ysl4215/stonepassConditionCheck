@@ -1,58 +1,35 @@
 $(document).ready(function() {
-
 $('#loading').hide();
-
 });
-
-
 
 // condition.jsp
 function email() {
 	let popUrl = "/email";
-
 	let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
-
 	window.open(popUrl, "e-mail 등록", popOption);
-
-
 }
 
 function insert() {
-
 	let popUrl = "/orgainsert";
 	let popOption = "width = 650px, height=300px, top=300px, left=300px, scrollbars=yes";
-
 	window.open(popUrl, "기관 등록", popOption);
-
 }
 
-
-
 function modify(bid) { 
-
 	var url = "/condition/content";
 	url = url + "?bid=" + bid;
-
 	let popUrl = url
 	let popOption = "width = 650px, height=300px, top=300px, left=300px, scrollbars=yes";
-
 	window.open(popUrl, "기관 수정", popOption);
-
 }
 
 function openPopup() {
-
 	/*  첫 번째 파라미터는 팝업창의 url 주소. 두 번째 파라미터는 팝업창의 이름. 마지막 파라미터는 팝업창에 대한 설정 */
-	window
-		.open("aa", popOpen, ['fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=650,height=550']);
-
+	window.open("aa", popOpen, ['fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto,width=650,height=550']);
 	iniform.target = "popOpen";
-
 	iniform.action = " URL명";
-
 	iniform.submit();
 }
-
 
 //CURL 단일버튼
 function kdw(kdwthis) {
@@ -90,7 +67,7 @@ function checkall() {
 	// chk라는 name을 가진 input태그를 찾아 checked를 true로 정의
 	if ($("#checkAll").prop("checked")) {
 		 $('#loading').show();
-		timerId = setTimeout(checkall, 20000);
+		timerId = setTimeout(checkall, 60000);
 		$("input[name=checkBoxId]").prop("checked", true)
 
 		var chkbox = $(".chkselect");

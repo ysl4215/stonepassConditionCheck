@@ -5,11 +5,19 @@
 <mapper namespace="com.swempire.web.condition.emailMapper">
 
 <select id="emailListSelect" resultType="com.swempire.web.condition.VO.EmailVO">
-select * from email_board
+	select * from email_board
+</select>
+
+<select id="emailListLimitSelect" resultType="com.swempire.web.condition.VO.EmailVO">
+	select * from email_board LIMIT #{startList}, #{listSize}
+</select>
+
+<select id="emailListCnt" resultType="int">
+	SELECT count(*) as listCnt FROM email_board
 </select>
 
 <insert id="emailInsert" parameterType="com.swempire.web.condition.VO.EmailVO">
-insert into email_board (bid, email, name) values (#{bid}, #{email}, #{name})
+	insert into email_board (bid, email, name) values (#{bid}, #{email}, #{name})
 </insert>
 
 <delete id="emailDelete" parameterType="com.swempire.web.condition.VO.EmailVO">
@@ -17,7 +25,7 @@ insert into email_board (bid, email, name) values (#{bid}, #{email}, #{name})
 </delete>
 
 <select id ="emailErrorOrganameSelect" parameterType="com.swempire.web.condition.VO.EmailVO" resultType="com.swempire.web.condition.VO.EmailVO">
-		select orga_name from condition_board where bid =#{bid}
+	select orga_name from condition_board where bid =#{bid}
 </select>
 
 </mapper>
